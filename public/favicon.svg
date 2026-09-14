@@ -1,0 +1,12 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="mattm.dev">
+  <rect x="0.5" y="0.5" width="31" height="31" rx="6" fill="#0A0C0F" stroke="#2A2F37"/>
+  <rect x="9" y="9" width="14" height="14" rx="1.5" fill="#12151A" stroke="#3A3F47" stroke-width="1.4"/>
+  <rect x="4" y="11" width="5.5" height="2.4" fill="#FF7A33"/>
+  <rect x="4" y="18.6" width="5.5" height="2.4" fill="#FF7A33"/>
+  <rect x="22.5" y="11" width="5.5" height="2.4" fill="#3FA9F5"/>
+  <rect x="22.5" y="18.6" width="5.5" height="2.4" fill="#3FA9F5"/>
+  <rect x="11" y="4" width="2.4" height="5.5" fill="#FF7A33"/>
+  <rect x="18.6" y="4" width="2.4" height="5.5" fill="#3FA9F5"/>
+  <rect x="11" y="22.5" width="2.4" height="5.5" fill="#FF7A33"/>
+  <rect x="18.6" y="22.5" width="2.4" height="5.5" fill="#3FA9F5"/>
+</svg>

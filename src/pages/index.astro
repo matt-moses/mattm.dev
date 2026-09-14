@@ -1,13 +1,51 @@
 ---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const dateFormat = new Intl.DateTimeFormat('en-US', {
+	year: 'numeric',
+	month: '2-digit',
+	day: '2-digit',
+});
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>mattm.dev</title>
-	</head>
-	<body>
-		<p>mattm.dev</p>
-	</body>
-</html>
+<BaseLayout
+	title="mattm.dev"
+	description="Notes on networking and security, written like the wire looks."
+>
+	<ul class="trace-list">
+		{
+			posts.map((post, i) => (
+				<li class:list={['trace-row', { 'is-hero': i === 0 }]}>
+					<a href={`/blog/${post.id}/`}>
+						<span class="trace-hop">{String(i + 1).padStart(2, '0')}</span>
+						<span class="trace-body">
+							<span class="trace-title">{post.data.title}</span>
+							<span class="trace-date">
+								{dateFormat.format(post.data.date).replaceAll('/', '-')}
+							</span>
+							<span class="trace-desc">{post.data.description}</span>
+						</span>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+
+	<p class="home-actions">
+		<a class="btn" href="/rss.xml">rss ↗</a>
+	</p>
+
+	<script>
+		if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			document.querySelectorAll<HTMLElement>('.trace-row').forEach((row, i) => {
+				row.classList.add('will-animate');
+				row.style.animationDelay = `${i * 40}ms`;
+			});
+		}
+	</script>
+</BaseLayout>

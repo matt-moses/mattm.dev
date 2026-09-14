@@ -1,0 +1,421 @@
+/* ---------------------------------------------------------------------
+   mattm.dev -- design tokens
+   Accent pair drawn from Ethernet twisted-pair coloring: used paired
+   (orange/blue), like a wiring diagram, not scattered as decoration.
+--------------------------------------------------------------------- */
+:root {
+	--bg: #0A0C0F;
+	--surface: #12151A;
+	--border-muted: #2A2F37;
+	--border-strong: #3A3F47;
+	--text: #E4E7EB;
+	--muted: #8B929B;
+	--accent: #FF7A33;
+	--accent-2: #3FA9F5;
+
+	--font-mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+	--font-sans: 'Inter', 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+	--content-width: 680px;
+	--motion-fast: 120ms;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	color-scheme: dark;
+}
+
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--text);
+	font-family: var(--font-sans);
+	font-size: 17px;
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 700px) {
+	body {
+		font-size: 18px;
+	}
+}
+
+img {
+	max-width: 100%;
+}
+
+/* ---------------------------------------------------------------------
+   Focus states -- always the blue accent, always visible.
+--------------------------------------------------------------------- */
+:focus {
+	outline: none;
+}
+
+:focus-visible {
+	outline: 2px solid var(--accent-2);
+	outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------
+   Links
+--------------------------------------------------------------------- */
+a {
+	color: var(--accent);
+	text-decoration: none;
+	border-bottom: 1px solid transparent;
+	transition: border-color var(--motion-fast) ease, color var(--motion-fast) ease;
+}
+
+a:hover {
+	border-bottom-color: var(--accent);
+}
+
+a:visited {
+	color: var(--accent-2);
+}
+
+a:visited:hover {
+	border-bottom-color: var(--accent-2);
+}
+
+/* ---------------------------------------------------------------------
+   Layout shell
+--------------------------------------------------------------------- */
+.shell {
+	max-width: var(--content-width);
+	margin-inline: auto;
+	padding-inline: 1.5rem;
+}
+
+.site-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 1rem 1.5rem;
+	padding-block: 2.5rem 3.5rem;
+}
+
+@media (min-width: 700px) {
+	.site-header {
+		padding-block-start: 4rem;
+	}
+}
+
+.logo {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6rem;
+	border-bottom: none;
+}
+
+.logo:hover {
+	border-bottom: none;
+}
+
+.logo-mark {
+	display: block;
+	width: 26px;
+	height: 26px;
+	flex-shrink: 0;
+}
+
+.logo-word {
+	font-family: var(--font-mono);
+	font-weight: 700;
+	font-size: 1rem;
+	letter-spacing: -0.02em;
+	color: var(--text);
+}
+
+.logo:hover .logo-word {
+	color: var(--text);
+}
+
+.site-nav {
+	font-family: var(--font-mono);
+	font-weight: 700;
+	font-size: 0.9rem;
+	letter-spacing: -0.01em;
+	color: var(--muted);
+	white-space: nowrap;
+}
+
+.site-nav a {
+	color: var(--muted);
+	border-bottom: 1px solid transparent;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+	color: var(--accent);
+	border-bottom-color: var(--accent);
+}
+
+.site-nav .sep {
+	color: var(--border-strong);
+	margin-inline: 0.15rem;
+}
+
+main {
+	padding-bottom: 5rem;
+	min-height: 40vh;
+}
+
+.site-footer {
+	border-top: 1px solid var(--border-muted);
+	padding-block: 1.5rem 3rem;
+}
+
+.site-footer p {
+	margin: 0;
+	font-family: var(--font-mono);
+	font-size: 0.8rem;
+	color: var(--muted);
+}
+
+/* ---------------------------------------------------------------------
+   Headings -- monospace at real display sizes, not a decorative label.
+--------------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4 {
+	font-family: var(--font-mono);
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: 1.25;
+	color: var(--text);
+}
+
+h1 {
+	font-size: clamp(1.7rem, 1.4rem + 1.4vw, 2.4rem);
+	margin: 0 0 0.75rem;
+}
+
+h2 {
+	font-size: 1.4rem;
+	margin: 2.5rem 0 1rem;
+}
+
+h3 {
+	font-size: 1.15rem;
+	margin: 2rem 0 0.75rem;
+}
+
+p {
+	max-width: 70ch;
+}
+
+/* ---------------------------------------------------------------------
+   Traceroute / directory-listing post rows (homepage)
+--------------------------------------------------------------------- */
+.trace-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.trace-row {
+	border-bottom: 1px solid var(--border-muted);
+}
+
+.trace-row:first-child {
+	border-top: 1px solid var(--border-muted);
+}
+
+.trace-row a {
+	display: grid;
+	grid-template-columns: 1.75rem minmax(0, 1fr);
+	column-gap: 1rem;
+	align-items: baseline;
+	padding-block: 1rem;
+	border-bottom: none;
+	color: var(--text);
+}
+
+.trace-row a:hover .trace-title,
+.trace-row a:focus-visible .trace-title {
+	color: var(--accent);
+	border-bottom: 1px solid var(--accent);
+}
+
+.trace-hop {
+	font-family: var(--font-mono);
+	color: var(--muted);
+	font-size: 0.9rem;
+}
+
+.trace-body {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	column-gap: 0.75rem;
+	min-width: 0;
+}
+
+.trace-title {
+	font-family: var(--font-mono);
+	font-weight: 700;
+	border-bottom: 1px solid transparent;
+	transition: color var(--motion-fast) ease, border-color var(--motion-fast) ease;
+}
+
+.trace-date {
+	font-family: var(--font-mono);
+	font-size: 0.85rem;
+	color: var(--muted);
+	white-space: nowrap;
+}
+
+.trace-desc {
+	flex-basis: 100%;
+	color: var(--muted);
+	font-size: 0.95rem;
+	margin-top: 0.15rem;
+}
+
+.trace-row.is-hero .trace-title {
+	font-size: 1.25rem;
+}
+
+.trace-row.is-hero .trace-hop {
+	color: var(--accent);
+}
+
+@media (min-width: 560px) {
+	.trace-date {
+		margin-left: auto;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.trace-row.will-animate {
+		opacity: 0;
+		animation: log-in 340ms ease-out forwards;
+	}
+}
+
+@keyframes log-in {
+	from {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.home-actions {
+	margin: 2.5rem 0 0;
+}
+
+/* ---------------------------------------------------------------------
+   Post metadata line + prose
+--------------------------------------------------------------------- */
+.post-meta {
+	font-family: var(--font-mono);
+	font-size: 0.85rem;
+	color: var(--muted);
+	margin: 0 0 2.5rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 0.6rem;
+}
+
+.post-meta .sep {
+	color: var(--border-strong);
+}
+
+.post-meta .tag {
+	color: var(--accent-2);
+}
+
+.prose > * + * {
+	margin-top: 1.25em;
+}
+
+.prose ul,
+.prose ol {
+	max-width: 70ch;
+	padding-left: 1.3rem;
+}
+
+.prose blockquote {
+	margin: 1.5em 0;
+	padding-left: 1rem;
+	border-left: 2px solid var(--border-strong);
+	color: var(--muted);
+}
+
+/* ---------------------------------------------------------------------
+   Code blocks -- surface color, thin muted border, no drop shadow.
+--------------------------------------------------------------------- */
+.prose pre {
+	background: var(--surface) !important;
+	border: 1px solid var(--border-muted);
+	border-radius: 4px;
+	padding: 1rem 1.1rem;
+	overflow-x: auto;
+	font-size: 0.85rem;
+	line-height: 1.55;
+}
+
+.prose code {
+	font-family: var(--font-mono);
+}
+
+.prose :not(pre) > code {
+	background: var(--surface);
+	border: 1px solid var(--border-muted);
+	border-radius: 3px;
+	padding: 0.1em 0.35em;
+	font-size: 0.88em;
+	color: var(--accent-2);
+}
+
+/* ---------------------------------------------------------------------
+   Buttons / CTAs -- sharp corners, outlined, solid fill on hover.
+--------------------------------------------------------------------- */
+.btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-family: var(--font-mono);
+	font-weight: 700;
+	font-size: 0.85rem;
+	letter-spacing: -0.01em;
+	color: var(--accent);
+	background: transparent;
+	border: 1px solid var(--accent);
+	border-radius: 0;
+	padding: 0.55rem 1rem;
+	transition: background-color var(--motion-fast) ease, color var(--motion-fast) ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+	background: var(--accent);
+	color: var(--bg);
+	border-bottom: 1px solid var(--accent);
+}
+
+/* ---------------------------------------------------------------------
+   About page hero art
+--------------------------------------------------------------------- */
+.about-mark {
+	width: 100%;
+	max-width: 420px;
+	height: auto;
+	margin-bottom: 2rem;
+}

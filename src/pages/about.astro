@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+	title="about"
+	description="Notes on networking and security, written by Matt Moses."
+>
+	<img
+		class="about-mark"
+		src="/images/mattmdev-logo-pcb.svg"
+		alt="mattm.dev"
+		width="640"
+		height="200"
+	/>
+	<h1>about</h1>
+	<div class="prose">
+		<p>
+			This is a small blog about networking and security -- the kind of
+			detail that's easy to skim past in a man page and expensive to
+			get wrong in production. Posts are short, technical, and written
+			for people who'd rather read a packet capture than a marketing
+			page.
+		</p>
+		<p>
+			Get new posts over <a href="/rss.xml">RSS</a>, or find the source
+			for this site
+			<a href="https://github.com/matt-moses/mattm.dev">on GitHub</a>.
+		</p>
+	</div>
+</BaseLayout>
