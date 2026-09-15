@@ -316,6 +316,23 @@ p {
 	}
 }
 
+.empty-state {
+	font-family: var(--font-mono);
+	font-size: 0.95rem;
+	color: var(--muted);
+	border-top: 1px solid var(--border-muted);
+	border-bottom: 1px solid var(--border-muted);
+	padding-block: 1.25rem;
+	max-width: none;
+}
+
+.empty-state-todo {
+	display: block;
+	margin-top: 0.5rem;
+	color: var(--accent-2);
+	font-size: 0.85rem;
+}
+
 .home-actions {
 	margin: 2.5rem 0 0;
 }

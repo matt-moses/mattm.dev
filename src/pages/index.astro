@@ -17,6 +17,16 @@ const dateFormat = new Intl.DateTimeFormat('en-US', {
 	title="mattm.dev"
 	description="Notes on networking and security, written like the wire looks."
 >
+	{
+		posts.length === 0 && (
+			<p class="empty-state">
+				still downloading — 100% packet loss between &ldquo;idea&rdquo; and &ldquo;finished
+				post.&rdquo; retry scheduled for whenever.
+				<span class="empty-state-todo">// TODO: fix content download</span>
+			</p>
+		)
+	}
+
 	<ul class="trace-list">
 		{
 			posts.map((post, i) => (
