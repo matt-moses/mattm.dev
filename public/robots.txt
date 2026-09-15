@@ -1,0 +1,14 @@
+# Allow the major search engines; block everything else by default,
+# including AI-training and generic scraping bots.
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: *
+Disallow: /
